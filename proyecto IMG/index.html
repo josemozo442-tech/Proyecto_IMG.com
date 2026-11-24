@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LÚMINA | Proyector de canciones</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+<div id="admin" class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo">♫</div>
+            <div>
+                <h2>LÚMINA</h2>
+                <small>Proyector de canciones</small>
+            </div>
+        </div>
+
+        <div class="section-label">BIBLIOTECA DE CANCIONES</div>
+
+        <input type="search" id="search"
+               placeholder="Buscar canción...">
+
+        <input type="file" id="files"
+               accept=".pptx" multiple hidden>
+
+        <button class="primary" id="importBtn">
+            + Importar PowerPoint
+        </button>
+
+        <button id="newBtn">+ Nueva canción</button>
+
+        <div id="library"></div>
+
+        <div class="sidebar-footer">
+            ● Almacenamiento local
+        </div>
+    </aside>
+
+    <main class="workspace">
+
+        <header>
+            <div>
+                <small class="section-label">ESTUDIO DE PROYECCIÓN</small>
+                <h1>Control de canciones</h1>
+            </div>
+
+            <button class="primary" id="openProjector">
+                ▣ Abrir proyector
+            </button>
+        </header>
+
+        <section class="live-panel">
+            <div class="panel-heading">
+                <span class="live-badge">● EN VIVO</span>
+                <span id="liveCounter">Sin proyección</span>
+            </div>
+
+            <h3 id="liveName">Ninguna canción activa</h3>
+
+            <div class="screen" id="livePreview">
+                Esperando una canción...
+            </div>
+
+            <div class="controls">
+                <button id="prevSong">« PPT anterior</button>
+                <button id="prevSlide">← Estrofa</button>
+                <button id="nextSlide">Estrofa →</button>
+                <button id="nextSong">Siguiente PPT »</button>
+                <button id="blackBtn">■ Pantalla negra</button>
+            </div>
+        </section>
+
+        <section class="editor-panel">
+
+            <div class="panel-heading">
+                <div>
+                    <small class="section-label">ÁREA PRIVADA</small>
+                    <h2>Preparación de canciones</h2>
+                </div>
+
+                <label class="switch-label">
+                    <input type="checkbox" id="privateMode">
+                    Preparar sin proyectar
+                </label>
+            </div>
+
+            <p class="muted" id="modeInfo">
+                Modo directo: selecciona un PPT para proyectarlo.
+            </p>
+
+            <div id="editor" hidden>
+
+                <label>Nombre de la canción</label>
+                <input id="songTitle" type="text">
+
+                <div class="editor-grid">
+
+                    <div class="slide-column">
+                        <h3>Estrofas</h3>
+                        <div id="slideList"></div>
+                        <button id="addSlide">+ Añadir estrofa</button>
+                    </div>
+
+                    <div class="edit-column">
+                        <div class="panel-heading">
+                            <h3>Vista previa privada</h3>
+                            <span class="private-badge">PRIVADO</span>
+                        </div>
+
+                        <div id="privatePreview" class="screen"></div>
+
+                        <label for="lyrics">Editar letra</label>
+
+                        <textarea id="lyrics" rows="7"
+                            placeholder="Escribe la letra aquí..."></textarea>
+
+                        <div class="controls">
+                            <button id="removeSlide">Eliminar estrofa</button>
+                            <button class="danger" id="removeSong">
+                                Eliminar canción
+                            </button>
+                        </div>
+
+                        <p class="muted">
+                            Las correcciones se guardan automáticamente
+                            sin modificar la pantalla pública.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            Windows + P → Extender |
+            F → Pantalla completa |
+            ← → Cambiar estrofa |
+            Ctrl + ← / → Cambiar canción
+        </footer>
+
+    </main>
+</div>
+
+<div id="audience" hidden>
+    <div id="audienceText"></div>
+</div>
+
+<div id="notification" role="status"></div>
+
+</body>
+</html>
